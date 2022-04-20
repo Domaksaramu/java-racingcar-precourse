@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import com.sun.jdi.request.DuplicateRequestException;
-
 import java.util.*;
 
 
