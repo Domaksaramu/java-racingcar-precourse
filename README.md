@@ -12,24 +12,40 @@
 6. 각 자동차의 이름과 게임의 회차는 플레이어로부터 입력받는다.
 
 # 게임설계
-1. 자동차
-   1. 정렬을 위한 comparable (내림차순)
-   2. 해당 회차 랜덤 값
-   3. 자동차 이름
-   4. 전진 횟수
-2. 자동차 리스트
-   1. 전진 횟수에 따른 정렬
-   2. 이름 리스트
-      1. 이름 리스트에 따른 대수 판별
-   3. 게임 회수
-   4. 현재 회차
+1. Domain
+   1. 자동차
+      1. 정렬을 위한 comparable (내림차순)
+      2. 해당 회차 랜덤 값
+      3. 자동차 이름
+      4. 전진 횟수
+   2. 자동차 리스트
+      1. 전진 횟수에 따른 정렬
+         1. Max 리스트 추출
+      2. 이름 리스트
+         1. 이름 리스트에 따른 대수 판별
+         2. 이름 중복 처리
+      3. 게임 회수
+      4. 현재 회차 
+2. Service
+   1. 랜덤 숫자 생성
+      1. Random => ThreadLocalRandom으로 변경
+         1. Random의 단점
+            1. RandomSeed가 같을 경우 중복값
+            2. 불필요한 자원 낭비
+               1. 중복을 피하기 위해 매번 currentTimeMillis() 호출
+            3. unsafe를 직접 호출하여 oldseed값을 변경
+            4. 참고 : https://intrepidgeeks.com/tutorial/implementation-principle-of-random-and-threadlocalrandom
+   2. 에러
+      1. 에러 종류에 따른 구분
+      2. 에러 종류별 메세지
+   3. 게임
+      1. 자동차 전진 판별
 3. UI
    1. 사용자 입력
-4. 에러
-   1. 에러 종류에 따른 구분
-   2. 에러 종류별 메세지
-5. 게임
-   1. 자동차 전진 판별
+   2. 문자열 이름으로 파싱
+   3. 문자열 숫자로 파싱
+   4. 문자열 검증
+   5. 문자열 타입 구분
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
