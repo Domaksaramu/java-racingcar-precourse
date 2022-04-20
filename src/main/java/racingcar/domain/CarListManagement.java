@@ -1,22 +1,28 @@
 package racingcar.domain;
 
+import com.sun.jdi.request.DuplicateRequestException;
+
 import java.util.*;
 
 
 public class CarListManagement {
     private List<CarObject> carsList;
-    /////////////private Set<String> setForDuplicateNames;
     private Integer carsNumber = 0;
 
-    public CarListManagement(List<String> carNames){
-        this.carsNumber = carNames.size();
-        carsList = initCarList(carNames);
-    }
     public CarListManagement(){
         this.carsList = new ArrayList<>();
     }
 
-    private List<CarObject> initCarList(List<String> carNames) {
+    /**
+     * 입력받은 자동차 이름 리스트로부터 CarObject 리스트를 생성
+     * @param carNames 자동차 이름 리스트
+     */
+    public CarListManagement(List<String> carNames){
+        this.carsList = createCarListByNames(carNames);
+        this.carsNumber = carNames.size();
+        verifyDuplicateNames(this.carsList);
+    }
+    private List<CarObject> createCarListByNames(List<String> carNames) {
         List<CarObject> resultList = new ArrayList<>();
         for(String carName : carNames){
             resultList.add(new CarObject(carName));
@@ -24,6 +30,28 @@ public class CarListManagement {
         return resultList;
     }
 
+    /**
+     * CarObject 리스트를 입력받음
+     * @param carsList
+     */
+    public void setCarsList(List<CarObject> carsList) {
+        this.carsList = carsList;
+        this.carsNumber = carsList.size();
+        verifyDuplicateNames(carsList);
+    }
+
+    /**
+     * 입력받은 carsList 에서 이름 중복 여부를 검사
+     * 중복이 있을경우 Exception
+     */
+    public void verifyDuplicateNames(List<CarObject> carsList){;
+        Set<String> setForDuplicateNames = new HashSet<>();
+        for (CarObject car: carsList) {
+            setForDuplicateNames.add(car.getCarName());
+        }
+        if(setForDuplicateNames.size() != carsList.size())
+            throw new IllegalArgumentException(RacingCarExeception.DUPLICATION_ARGUMENTS);
+    }
     /**
      * 전진횟수를 내림차순으로 정렬 (comparable.compareTo가 내림차순 기준)
      * @return
@@ -41,10 +69,6 @@ public class CarListManagement {
         return carsList;
     }
 
-    public void setCarsList(List<CarObject> carsList) {
-        this.carsList = carsList;
-        this.carsNumber = carsList.size();
-    }
 
     public void setCarsNumber(Integer carsNumber) {
         this.carsNumber = carsNumber;
@@ -68,15 +92,13 @@ public class CarListManagement {
         sortCarsList();
         CarObject maxCar = new CarObject(this.carsList.get(0));
         for (CarObject car: this.carsList) {
-            if(maxCar.getForwardCount() == car.getForwardCount()){
-                resultList.add(new CarObject(car));
-            }
+            addToMaxList(resultList, car);
         }
         return resultList;
     }
-    public void verifyDuplicateNames(){
-
-        return;
+    public void addToMaxList(List<CarObject> resultList, CarObject car){
+        if(this.carsList.get(0).getForwardCount() == car.getForwardCount())
+            resultList.add(new CarObject(car));
     }
     @Override
     public String toString() {
