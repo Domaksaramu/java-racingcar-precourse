@@ -1,6 +1,5 @@
 package racingcar.UI;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,6 +11,7 @@ import racingcar.domain.RacingCarExeception;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,16 +30,16 @@ public class RacingCarUITest {
     private static List<Arguments> parseNamesTestArguments(){
         List<Arguments> arguments = new ArrayList<>();
         arguments.add(Arguments.of("James,Tommy,John",
-                Arrays.array("James","Tommy","John")));
+                Arrays.asList("James", "Tommy", "John")));
         arguments.add(Arguments.of("car1,car2,car3,car4,car5",
-                Arrays.array("car1","car2","car3","car4","car5")));
+                Arrays.asList("car1", "car2", "car3", "car4", "car5")));
         return arguments;
     }
 
     @DisplayName("이름 파싱 테스트")
     @ParameterizedTest
     @MethodSource("parseNamesTestArguments")
-    void parseNamesTest(String inputStr, String[] expected){
+    void parseNamesTest(String inputStr, List<String> expected){
         RacingCarUI  racingCarUI = new RacingCarUI();
         assertThat(racingCarUI.parseNames(inputStr)).isEqualTo(expected);
     }

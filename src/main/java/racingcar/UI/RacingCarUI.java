@@ -3,6 +3,7 @@ package racingcar.UI;
 import racingcar.domain.CarObject;
 import racingcar.domain.RacingCarExeception;
 
+import java.util.Arrays;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -27,10 +28,10 @@ public class RacingCarUI {
      * @param buffer 사용자 입력 buffer
      * @return String array
      */
-    public String[] parseNames(String buffer){
-        String[] result;
+    public List<String> parseNames(String buffer){
+        List<String> result;
         try {
-            result = buffer.split(",");
+            result = Arrays.asList(buffer.split(","));
         }
         catch (Exception e){
             throw new IllegalStateException(RacingCarExeception.UNKNOWN_PARSE_NAMES_ERROR);
@@ -39,7 +40,7 @@ public class RacingCarUI {
              ) {
             verifyLengthOfCarName(name);
         }
-        if(result.length<=1)
+        if(result.size()<=1)
             throw new IllegalArgumentException(RacingCarExeception.LACK_NUMBER_OF_CARS_ERROR);
         return result;
     }
