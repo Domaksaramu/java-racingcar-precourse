@@ -56,10 +56,18 @@ public class CarObject implements Comparable<CarObject>{
 
     @Override
     public String toString() {
-        return "{" +
-                "carName='" + carName + '\'' +
-                ", forwardCount=" + forwardCount +
-                ", currentRoundNumber=" + currentRoundNumber  +
-                '}';
+        return carName + ":"+getMovementBars();
+    }
+
+    /**
+     * 해당 차량의 현재 진행상황을 요구사항에 맞추어 리턴
+     * @return -
+     */
+    private String getMovementBars(){
+        String result = "";
+        for(Integer i =0 ; i< this.forwardCount ; i++){
+            result += "-";
+        }
+        return result;
     }
 }

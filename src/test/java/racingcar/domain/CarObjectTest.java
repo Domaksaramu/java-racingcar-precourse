@@ -8,6 +8,13 @@ public class CarObjectTest {
     void generateCarTest(){
         String carName = "TestCar";
         CarObject carObject = new CarObject(carName);
-        assertThat(carObject.toString()).isEqualTo("{carName='TestCar', forwardCount=0, currentRoundNumber=-1}");
+        assertThat(carObject.toString()).isEqualTo("TestCar:");
+    }
+    @Test
+    void toStringTest(){
+        String carName = "TestCar";
+        CarObject carObject = new CarObject(carName);
+        carObject.setForwardCount(3);
+        assertThat(carObject.toString()).isEqualTo("TestCar:---");
     }
 }
