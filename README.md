@@ -29,13 +29,6 @@
       4. 현재 회차 
 2. Service
    1. 랜덤 숫자 생성
-      1. Random => ThreadLocalRandom으로 변경
-         1. Random의 단점
-            1. RandomSeed가 같을 경우 중복값
-            2. 불필요한 자원 낭비
-               1. 중복을 피하기 위해 매번 currentTimeMillis() 호출
-            3. unsafe를 직접 호출하여 oldseed값을 변경
-            4. 참고 : https://intrepidgeeks.com/tutorial/implementation-principle-of-random-and-threadlocalrandom
    2. 에러
       1. 에러 종류에 따른 구분
       2. 에러 종류별 메세지
