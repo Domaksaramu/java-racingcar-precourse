@@ -42,13 +42,13 @@ public class CarListManagement {
      * 입력받은 carsList 에서 이름 중복 여부를 검사
      * 중복이 있을경우 Exception
      */
-    public void verifyDuplicateNames(List<CarObject> carsList){;
+    private void verifyDuplicateNames(List<CarObject> carsList){;
         Set<String> setForDuplicateNames = new HashSet<>();
         for (CarObject car: carsList) {
             setForDuplicateNames.add(car.getCarName());
         }
         if(setForDuplicateNames.size() != carsList.size())
-            throw new IllegalArgumentException(RacingCarExeception.DUPLICATION_ARGUMENTS);
+            throw new IllegalArgumentException(RacingCarExeception.DUPLICATION_ARGUMENTS_ERROR);
     }
     /**
      * 전진횟수를 내림차순으로 정렬 (comparable.compareTo가 내림차순 기준)
@@ -88,13 +88,12 @@ public class CarListManagement {
     public List<CarObject> getMaxCarObjects(){
         List<CarObject> resultList = new ArrayList<>();
         sortCarsList();
-        CarObject maxCar = new CarObject(this.carsList.get(0));
         for (CarObject car: this.carsList) {
             addToMaxList(resultList, car);
         }
         return resultList;
     }
-    public void addToMaxList(List<CarObject> resultList, CarObject car){
+    private void addToMaxList(List<CarObject> resultList, CarObject car){
         if(this.carsList.get(0).getForwardCount() == car.getForwardCount())
             resultList.add(new CarObject(car));
     }

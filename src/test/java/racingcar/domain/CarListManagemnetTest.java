@@ -72,6 +72,6 @@ public class CarListManagemnetTest {
         carsNamesList.add("TEST3");
         assertThatThrownBy(()->new CarListManagement(carsNamesList))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(RacingCarExeception.DUPLICATION_ARGUMENTS);
+                .hasMessage(RacingCarExeception.DUPLICATION_ARGUMENTS_ERROR);
     }
 }
