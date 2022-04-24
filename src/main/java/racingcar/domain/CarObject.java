@@ -56,7 +56,7 @@ public class CarObject implements Comparable<CarObject>{
 
     @Override
     public String toString() {
-        return carName + ":"+getMovementBars();
+        return carName + " : "+getMovementBars();
     }
 
     /**

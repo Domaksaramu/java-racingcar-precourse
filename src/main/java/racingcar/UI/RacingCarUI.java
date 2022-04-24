@@ -3,6 +3,7 @@ package racingcar.UI;
 import racingcar.domain.CarObject;
 import racingcar.domain.RacingCarExeception;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
@@ -81,5 +82,21 @@ public class RacingCarUI {
     }
     public void printGameSystemMessage(String buffer){
         System.out.println(buffer);
+    }
+    public String extractNamesFromCarObjects(List<CarObject> carObjectList){
+        List<String> carNames = new ArrayList<>();
+        for (CarObject car: carObjectList) {
+            carNames.add(car.getCarName());
+        }
+
+        return listToString(carNames);
+    }
+    public String listToString(List<String> carNames){
+        String result = "";
+        for (String str: carNames) {
+            result += ", " + str;
+        }
+        result = result.substring(2);
+        return result;
     }
 }
