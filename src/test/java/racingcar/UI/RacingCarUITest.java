@@ -107,9 +107,9 @@ public class RacingCarUITest {
         car3.setForwardCount(3);
         carObjectList1.add(car3);
         result.add(Arguments.of(carObjectList1,
-                "test1:-\r\n"
-                        + "test2:--\r\n"
-                        + "test3:---\r\n\r\n"));
+                "test1 : -\r\n"
+                        + "test2 : --\r\n"
+                        + "test3 : ---\r\n\r\n"));
 
         return result;
     }

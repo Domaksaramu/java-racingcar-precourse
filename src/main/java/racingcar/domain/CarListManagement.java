@@ -5,7 +5,6 @@ import java.util.*;
 
 public class CarListManagement {
     private List<CarObject> carsList;
-    private Integer carsNumber = 0;
 
     public CarListManagement(){
         this.carsList = new ArrayList<>();
@@ -17,7 +16,6 @@ public class CarListManagement {
      */
     public CarListManagement(List<String> carNames){
         this.carsList = createCarListByNames(carNames);
-        this.carsNumber = carNames.size();
         verifyDuplicateNames(this.carsList);
     }
     private List<CarObject> createCarListByNames(List<String> carNames) {
@@ -34,7 +32,6 @@ public class CarListManagement {
      */
     public void setCarsList(List<CarObject> carsList) {
         this.carsList = carsList;
-        this.carsNumber = carsList.size();
         verifyDuplicateNames(carsList);
     }
 
@@ -59,18 +56,12 @@ public class CarListManagement {
         return this.carsList;
     }
 
-    public Integer getCarsNumber() {
-        return carsNumber;
-    }
 
     public List<CarObject> getCarsList() {
         return carsList;
     }
 
 
-    public void setCarsNumber(Integer carsNumber) {
-        this.carsNumber = carsNumber;
-    }
     public void addCar(String carName){
         CarObject car = new CarObject(carName);
         this.carsList.add(car);
@@ -101,7 +92,6 @@ public class CarListManagement {
     public String toString() {
         return "{" +
                 "carsList=" + carsList +
-                ", carsNumber=" + carsNumber +
                 '}';
     }
 }

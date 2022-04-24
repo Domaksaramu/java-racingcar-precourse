@@ -10,7 +10,7 @@ public class CarObject implements Comparable<CarObject>{
     private String carName;
 
     public CarObject(String carName){
-        this.carName = carName;
+        this.carName = carName.trim();
         this.forwardCount = 0;
         this.currentRoundNumber = -1;
     }

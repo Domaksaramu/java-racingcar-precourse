@@ -19,7 +19,7 @@ public class CarListManagemnetTest {
         carsNamesList.add("TEST2");
         carsNamesList.add("TEST3");
         CarListManagement carListManagement = new CarListManagement(carsNamesList);
-        assertThat(carListManagement.toString()).isEqualTo("{carsList=[TEST1:, TEST2:, TEST3:], carsNumber=3}");
+        assertThat(carListManagement.toString()).isEqualTo("{carsList=[TEST1 : , TEST2 : , TEST3 : ]}");
     }
 
     @DisplayName("정렬되지 않은 cartList를 내림차순으로 정렬")
@@ -38,7 +38,7 @@ public class CarListManagemnetTest {
         carList.add(car3);
         carListManagement.setCarsList(carList);
         carListManagement.sortCarsList();
-        assertThat(carListManagement.toString()).isEqualTo("{carsList=[TEST3:---, TEST2:--, TEST1:-], carsNumber=3}");
+        assertThat(carListManagement.toString()).isEqualTo("{carsList=[TEST3 : ---, TEST2 : --, TEST1 : -]}");
     }
 
     @DisplayName("CarListManagement로부터 Max List 추출")
@@ -59,7 +59,7 @@ public class CarListManagemnetTest {
         car4.setForwardCount(3);
         carList.add(car4);
         carListManagement.setCarsList(carList);
-        assertThat(carListManagement.getMaxCarObjects().toString()).isEqualTo("[TEST3:---, TEST4:---]");
+        assertThat(carListManagement.getMaxCarObjects().toString()).isEqualTo("[TEST3 : ---, TEST4 : ---]");
     }
 
     @DisplayName("중복된 String List를 할당하여, 중복에 대한 Exception이 일어나는지 테스트")
