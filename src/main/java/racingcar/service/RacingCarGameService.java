@@ -26,7 +26,7 @@ public class RacingCarGameService {
             winners = carListManagement.getMaxCarObjects();
             resultWinners = racingCarUI.extractNamesFromCarObjects(winners);
         }
-        racingCarUI.printGameSystemMessage("최종 우승자:" + resultWinners);
+        racingCarUI.printGameSystemMessage("최종 우승자: " + resultWinners);
         return true;
     }
     private void playEachPlayerGame(CarObject car){
